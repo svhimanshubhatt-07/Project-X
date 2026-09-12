@@ -1,0 +1,15 @@
+@import './variables.css';
+@import './typography.css';
+@import './utilities.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    @apply antialiased selection:bg-teal-500 selection:text-white;
+  }
+}

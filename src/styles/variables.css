@@ -1,0 +1,86 @@
+/* ==========================================================================
+   PROJECT X - CENTRAL GLOBAL THEME COLOR VARIABLES
+   --------------------------------------------------------------------------
+   Changing ANY color code here will immediately reflect across BOTH:
+   1. Admin Dashboard
+   2. Company Owner Dashboard
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. GLOBAL BACKGROUNDS
+     ------------------------------------------------------------------------ */
+  --bg-app: #03130e;             /* Main dark forest-green application background */
+  --bg-surface: #06231c;         /* Primary card, sidebar dropdown, and panel surfaces */
+  --bg-surface-hover: #0a2e26;   /* Hover state for surface elements */
+  --bg-card: #06231c;            /* Default card background */
+  --bg-card-hover: #092e25;      /* Card hover background */
+  --bg-card-inner: #041914;      /* Sub-cards, search inputs, wells, and nested containers */
+  --bg-sidebar: #041c16;         /* Left navigation sidebar */
+  --bg-sidebar-active: #00e599;  /* Active navigation item pill background (vibrant emerald) */
+  --bg-header: #03130e;          /* Top navigation header */
+  --bg-modal: #06231c;           /* Modal dialog body */
+  --bg-modal-header: #041914;    /* Modal header and footer bar */
+
+  /* ------------------------------------------------------------------------
+     2. GLOBAL BORDERS & DIVIDERS
+     ------------------------------------------------------------------------ */
+  --border-subtle: #0d382e;      /* Default container and input border */
+  --border-strong: #145445;      /* Hover and active border */
+  --border-card: #0d382e;        /* Standard card border */
+  --border-divider: #0b2e26;     /* Table rows, header dividers, and horizontal rules */
+  --border-accent: rgba(0, 229, 153, 0.4); /* Glowing emerald accent border */
+
+  /* ------------------------------------------------------------------------
+     3. BRAND & ACCENT COLORS
+     ------------------------------------------------------------------------ */
+  --brand-primary: #00e599;         /* Primary Brand Emerald / Mint */
+  --brand-primary-hover: #00c782;   /* Primary Hover Emerald */
+  --brand-secondary: #06b6d4;       /* Secondary Cyan */
+  --brand-secondary-hover: #0891b2; /* Secondary Hover Cyan */
+  --brand-glow: rgba(0, 229, 153, 0.25); /* Emerald glow effect */
+
+  /* ------------------------------------------------------------------------
+     4. STATUS & FEEDBACK COLORS
+     ------------------------------------------------------------------------ */
+  --status-success: #00e599;     /* Verified / Active / Approved (Emerald Green) */
+  --status-warning: #f59e0b;     /* Pending / Action Required (Amber) */
+  --status-danger: #ef4444;      /* Rejected / Suspended (Rose Red) */
+  --status-info: #06b6d4;        /* Under Review / Notice (Cyan Blue) */
+
+  /* ------------------------------------------------------------------------
+     5. TYPOGRAPHY & TEXT COLORS
+     ------------------------------------------------------------------------ */
+  --text-primary: #f8fafc;       /* Titles, headings, and high-emphasis white text */
+  --text-secondary: #94a3b8;     /* Secondary subtitles and field descriptions */
+  --text-muted: #64748b;         /* Placeholder text and timestamps */
+
+  /* ------------------------------------------------------------------------
+     6. RADIUS & SHADOWS
+     ------------------------------------------------------------------------ */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.35), 0 8px 10px -6px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 25px rgba(0, 229, 153, 0.25);
+  --shadow-glow-emerald: 0 0 25px rgba(0, 229, 153, 0.3);
+
+  /* ------------------------------------------------------------------------
+     7. GLOBAL TABLE THEME VARIABLES
+     ------------------------------------------------------------------------ */
+  --bg-table: #06231c;             /* Main table card & container background */
+  --bg-table-header: #041a14;      /* Table <thead> column header background */
+  --bg-table-row: #06231c;         /* Table <tbody> row background */
+  --bg-table-row-hover: #0a2f26;   /* Table row hover state background */
+  --bg-table-empty: #041914;       /* Empty table placeholder background */
+  --border-table: #0d382e;         /* Table outer card border */
+  --border-table-header: #0b2e26;  /* Table header bottom divider border */
+  --border-table-row: #0b2e26;     /* Table row divider line border */
+  --text-table-header: #94a3b8;    /* Table column header label text color */
+  --text-table-body: #f8fafc;      /* Table primary cell text color */
+  --text-table-muted: #64748b;     /* Table secondary / muted text color */
+}

@@ -1,0 +1,8 @@
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+body, button, input, select, textarea {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
