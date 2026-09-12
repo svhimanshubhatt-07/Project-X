@@ -15,6 +15,12 @@ export const COMPANY_OWNER_NAVIGATION: MenuItem[] = [
     icon: 'Building2',
   },
   {
+    id: 'owner-my-services',
+    title: 'My Services',
+    path: ROUTES.COMPANY_OWNER.MY_SERVICES,
+    icon: 'Layers',
+  },
+  {
     id: 'owner-documents',
     title: 'Documents',
     path: ROUTES.COMPANY_OWNER.DOCUMENTS,

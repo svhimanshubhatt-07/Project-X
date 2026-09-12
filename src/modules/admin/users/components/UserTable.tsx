@@ -1,11 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DataTable } from '../../../../shared/components/dashboard/DataTable';
 import { StatusBadge } from '../../../../shared/components/dashboard/StatusBadge';
 import { PlatformUserRecord } from '../../../../shared/services/mockDataStore';
 import { Avatar } from '../../../../shared/components/ui/Avatar';
-import { Button } from '../../../../shared/components/ui/Button';
-import { Shield, Briefcase, Power, CheckCircle, Ban, Eye, Globe, Users } from 'lucide-react';
-import { formatDate } from '../../../../shared/utils/formatDate';
+import { Shield, Briefcase, Eye, Globe } from 'lucide-react';
+import { ROUTES } from '../../../../shared/constants/routes.constants';
 
 export interface UserTableProps {
   users: PlatformUserRecord[];
@@ -16,7 +16,7 @@ export interface UserTableProps {
   totalItems: number;
   pageSize: number;
   onPageChange: (page: number) => void;
-  onToggleStatus: (user: PlatformUserRecord) => void;
+  onToggleStatus?: (user: PlatformUserRecord) => void;
   onViewDetails?: (user: PlatformUserRecord) => void;
 }
 
@@ -32,6 +32,16 @@ export const UserTable: React.FC<UserTableProps> = ({
   onToggleStatus,
   onViewDetails,
 }) => {
+  const navigate = useNavigate();
+
+  const handleRowClick = (user: PlatformUserRecord) => {
+    if (onViewDetails) {
+      onViewDetails(user);
+    } else {
+      navigate(ROUTES.ADMIN.USER_DETAILS(user.id));
+    }
+  };
+
   const columns = [
     {
       key: 'name',
@@ -113,7 +123,7 @@ export const UserTable: React.FC<UserTableProps> = ({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onViewDetails?.(item);
+              navigate(ROUTES.ADMIN.USER_DETAILS(item.id));
             }}
             className="p-1.5 rounded-lg text-[var(--brand-primary)] hover:opacity-80 hover:bg-[var(--brand-primary)]/10 border border-transparent hover:border-[var(--brand-primary)]/20 transition-all duration-150 inline-flex items-center justify-center cursor-pointer"
             title="View User Details"
@@ -138,6 +148,7 @@ export const UserTable: React.FC<UserTableProps> = ({
       totalItems={totalItems}
       pageSize={pageSize}
       onPageChange={onPageChange}
+      onRowClick={handleRowClick}
     />
   );
 };

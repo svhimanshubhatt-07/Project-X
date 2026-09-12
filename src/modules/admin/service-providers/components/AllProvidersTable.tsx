@@ -109,7 +109,7 @@ export const AllProvidersTable: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Bar with Add Button and Status Tabs */}
+      {/* Top Bar with Status Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <Tabs
           variant="status-cards"
@@ -136,16 +136,6 @@ export const AllProvidersTable: React.FC = () => {
             },
           ]}
         />
-
-        <Button
-          variant="primary"
-          size="sm"
-          onClick={() => setIsAddModalOpen(true)}
-          leftIcon={<Plus className="w-4 h-4" />}
-          className="shrink-0 self-start sm:self-center"
-        >
-          Add Service Provider
-        </Button>
       </div>
 
       {/* Providers Table View */}
@@ -227,7 +217,7 @@ export const AllProvidersTable: React.FC = () => {
                         </div>
                       </td>
                       <td className="py-4 px-6 text-right">
-                        <div className="flex items-center justify-end gap-2">
+                        <div className="flex items-center justify-end">
                           <button
                             onClick={() => navigate(`/admin/service-providers/${sp.id}`)}
                             className="p-1.5 rounded-lg text-teal-400 hover:text-teal-300 hover:bg-teal-500/10 border border-transparent hover:border-teal-500/20 transition-all duration-150 inline-flex items-center justify-center cursor-pointer"
@@ -236,14 +226,6 @@ export const AllProvidersTable: React.FC = () => {
                           >
                             <Eye className="w-4 h-4" />
                           </button>
-                          <Button
-                            size="sm"
-                            variant={sp.status === 'ACTIVE' ? 'outline' : 'success'}
-                            onClick={() => handleToggleStatus(sp)}
-                            className="text-xs"
-                          >
-                            {sp.status === 'ACTIVE' ? 'Suspend' : 'Activate'}
-                          </Button>
                         </div>
                       </td>
                     </tr>

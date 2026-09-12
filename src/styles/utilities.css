@@ -58,3 +58,43 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==========================================================================
+   THEME HARMONIZATION OVERRIDES
+   Maps any legacy navy/blue classes to matching forest green CSS variables
+   ========================================================================== */
+.bg-\[\#091b27\],
+.bg-\[\#091b27\]\/80,
+.bg-\[\#091b27\]\/60 {
+  background-color: var(--bg-card-inner) !important;
+}
+
+.bg-\[\#0c2130\],
+.bg-\[\#0c2637\],
+.bg-\[\#081b28\],
+.bg-\[\#071622\],
+.bg-\[\#091e2c\],
+.bg-\[\#0f2838\] {
+  background-color: var(--bg-card) !important;
+}
+
+.hover\:bg-\[\#143144\]:hover,
+.hover\:bg-\[\#091b27\]:hover {
+  background-color: var(--bg-surface-hover) !important;
+}
+
+.border-\[\#17384e\],
+.border-\[\#173d56\],
+.border-\[\#1c4560\] {
+  border-color: var(--border-subtle) !important;
+}
+
+.border-\[\#143144\] {
+  border-color: var(--border-divider) !important;
+}
+
+.divide-\[\#143144\] > * + *,
+.divide-\[\#17384e\] > * + * {
+  border-color: var(--border-divider) !important;
+}
+

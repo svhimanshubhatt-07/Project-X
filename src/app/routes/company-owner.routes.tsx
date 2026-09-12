@@ -3,6 +3,9 @@ import { CompanyOwnerLayout } from '../../layouts/CompanyOwnerLayout/CompanyOwne
 import { CompanyOwnerDashboardPage } from '../../modules/company-owner/dashboard/CompanyOwnerDashboardPage';
 import { CompanyProfilePage } from '../../modules/company-owner/my-company/CompanyProfilePage';
 import { EditCompanyPage } from '../../modules/company-owner/my-company/EditCompanyPage';
+import { MyServicesPage } from '../../modules/company-owner/my-services/MyServicesPage';
+import { CompanyAddServicePage } from '../../modules/company-owner/my-services/CompanyAddServicePage';
+import { CompanyServiceDetailsPage } from '../../modules/company-owner/my-services/CompanyServiceDetailsPage';
 import { ListingOverviewPage } from '../../modules/company-owner/my-listing/ListingOverviewPage';
 import { CompanyDirectoryPage } from '../../modules/company-owner/discover-companies/CompanyDirectoryPage';
 import { CompanyDetailsPage } from '../../modules/company-owner/discover-companies/CompanyDetailsPage';
@@ -32,6 +35,18 @@ export const companyOwnerRoutes: RouteObject = {
     {
       path: 'my-company/edit',
       element: <EditCompanyPage />,
+    },
+    {
+      path: 'my-services',
+      element: <MyServicesPage />,
+    },
+    {
+      path: 'my-services/create',
+      element: <CompanyAddServicePage />,
+    },
+    {
+      path: 'my-services/:id',
+      element: <CompanyServiceDetailsPage />,
     },
     {
       path: 'my-listing',

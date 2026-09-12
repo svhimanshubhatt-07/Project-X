@@ -38,6 +38,7 @@ import {
   User,
   Lock,
   FileSpreadsheet,
+  Layers,
 } from 'lucide-react';
 import clsx from 'clsx';
 import { useAuth } from '../../features/authentication/hooks/useAuth';
@@ -77,6 +78,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   User: <User className="w-5 h-5" />,
   Lock: <Lock className="w-5 h-5" />,
   FileSpreadsheet: <FileSpreadsheet className="w-5 h-5" />,
+  Layers: <Layers className="w-5 h-5" />,
 };
 
 export interface MobileSidebarProps {

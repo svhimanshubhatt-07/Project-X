@@ -15,6 +15,9 @@ export function useUsers() {
 
   return {
     users,
+    getUserById: (id: string) => mockDataStore.getUserById(id),
+    updateUser: (id: string, updates: Partial<PlatformUserRecord>) =>
+      mockDataStore.updateUser(id, updates),
     addUser: (user: Omit<PlatformUserRecord, 'id' | 'registrationDate' | 'lastLoginDate'>) =>
       mockDataStore.addUser(user),
     setUserStatus: (id: string, status: 'ACTIVE' | 'SUSPENDED' | 'INACTIVE') =>

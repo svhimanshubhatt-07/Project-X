@@ -125,6 +125,25 @@ export interface CMSSectionRecord {
   lastUpdated: string;
 }
 
+export interface CompanyServiceVerificationRecord {
+  id: string;
+  serviceName: string;
+  companyId: string;
+  companyName: string;
+  companyIndustry: string;
+  category: string;
+  deliveryModel: string;
+  pricingTier: string;
+  submissionDate: string;
+  status: 'PENDING' | 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';
+  description: string;
+  deliverables: string[];
+  certifications: string[];
+  slaCommitment: string;
+  reviewerRemarks?: string;
+  decidedDate?: string;
+}
+
 // Initial Service Providers
 export const INITIAL_SERVICE_PROVIDERS: ServiceProviderRecord[] = [
   {
@@ -895,10 +914,143 @@ const INITIAL_CMS_SECTIONS: CMSSectionRecord[] = [
   }
 ];
 
+export const INITIAL_SERVICE_VERIFICATIONS: CompanyServiceVerificationRecord[] = [
+  {
+    id: 'SRV-2026-101',
+    serviceName: 'Custom Cleanroom Robotic Integration',
+    companyId: 'cmp_nova_01',
+    companyName: 'Nova Robotics & Aerospace AI',
+    companyIndustry: 'Robotics & AI',
+    category: 'Cleanroom & Industrial Robotics',
+    deliveryModel: 'Turnkey On-Site Deployment & Calibration',
+    pricingTier: 'Enterprise SLA (Annual Contract)',
+    submissionDate: '2026-03-08',
+    status: 'PENDING',
+    description: 'Turnkey integration of 7-axis robotic manipulators into ISO-4 cleanroom environments with custom sub-millimeter trajectory planning algorithms.',
+    deliverables: [
+      'Cleanroom ISO Class 4/5 Compliance Certification',
+      'Spatial trajectory synchronization ROS2 driver',
+      'On-site calibration and failover telemetry monitoring',
+      '24/7 dedicated tier-3 field engineering support'
+    ],
+    certifications: ['ISO 14644-1 Cleanroom', 'CE Machinery Directive', 'ROS2 Enterprise Certified'],
+    slaCommitment: '99.98% uptime SLA with < 2-hour on-site response guarantee',
+  },
+  {
+    id: 'SRV-2026-102',
+    serviceName: 'Managed Kubernetes for AI & LLM Training',
+    companyId: 'cmp_aether_02',
+    companyName: 'Aether Cloud HyperScale',
+    companyIndustry: 'Cloud Infrastructure',
+    category: 'Cloud & AI Infrastructure',
+    deliveryModel: 'Dedicated Private Cloud Cluster',
+    pricingTier: 'Custom Enterprise Tier',
+    submissionDate: '2026-03-07',
+    status: 'UNDER_REVIEW',
+    description: 'GPU-accelerated Kubernetes multi-tenant clusters optimized for distributed Large Language Model (LLM) fine-tuning, automated checkpointing, and InfiniBand networking.',
+    deliverables: [
+      'Multi-node H100 / A100 GPU cluster provisioning',
+      'Automated PyTorch distributed training operator',
+      'Dedicated VPC peering and SOC2 Type II isolation',
+      'Live metric dashboards with cost allocation tracking'
+    ],
+    certifications: ['SOC 2 Type II', 'ISO 27001', 'HIPAA Ready Cloud'],
+    slaCommitment: '99.995% compute SLA availability backed by financial credits',
+  },
+  {
+    id: 'SRV-2026-103',
+    serviceName: 'High-Frequency ASIC Turnkey Prototyping',
+    companyId: 'cmp_zenith_03',
+    companyName: 'Zenith Semiconductor Labs',
+    companyIndustry: 'Semiconductors',
+    category: 'Hardware & Silicon Design',
+    deliveryModel: 'Design-to-Foundry Turnkey Service',
+    pricingTier: 'Per Project Milestone',
+    submissionDate: '2026-03-01',
+    status: 'APPROVED',
+    description: 'End-to-end silicon design, RTL verification, synthesis, and TSMC/GlobalFoundries shuttle run packaging for next-gen optical communication chips.',
+    deliverables: [
+      'Complete RTL verification and testbench coverage report',
+      'GDSII physical layout sign-off',
+      'Packaging and wafer probe test bench setup',
+      'Prototype silicon sample validation board'
+    ],
+    certifications: ['ISO 9001:2015', 'TSMC OIP Partner Validated', 'IEEE Compliant'],
+    slaCommitment: 'First-silicon success rate > 95% with milestone verification milestones',
+    reviewerRemarks: 'Verified silicon design portfolio, IP licenses, and foundry contracts. Approved for marketplace catalog.',
+    decidedDate: '2026-03-05',
+  },
+  {
+    id: 'SRV-2026-104',
+    serviceName: 'Virtual Power Plant & Grid Interconnect Auditing',
+    companyId: 'cmp_solaris_04',
+    companyName: 'Solaris CleanGrid Energy',
+    companyIndustry: 'CleanTech & Energy',
+    category: 'Energy & Grid Infrastructure',
+    deliveryModel: 'SaaS Telemetry + Hardware Node Audits',
+    pricingTier: 'Monthly Subscription + Grid Commission',
+    submissionDate: '2026-03-09',
+    status: 'PENDING',
+    description: 'Autonomous micro-grid energy balancing, battery storage scheduling, and state utility regulatory interconnect compliance auditing.',
+    deliverables: [
+      'Real-time automated grid load balancing algorithm',
+      'Regulatory compliance audit packet for State Electricity Boards',
+      'Smart meter bidirectional integration API',
+      'Carbon credit verification ledger report'
+    ],
+    certifications: ['CEA Grid Standards', 'BIS IS 16227 Certified', 'IEC 61850 Interoperability'],
+    slaCommitment: 'Sub-50ms grid frequency adjustment response rate',
+  },
+  {
+    id: 'SRV-2026-105',
+    serviceName: 'Autonomous Yard Logistics Routing Engine',
+    companyId: 'cmp_omni_05',
+    companyName: 'OmniLogix Autonomous Freight',
+    companyIndustry: 'Logistics & Supply Chain',
+    category: 'Supply Chain AI',
+    deliveryModel: 'Cloud API + Edge On-Premise Gateway',
+    pricingTier: 'Per-Vehicle Monthly License',
+    submissionDate: '2026-02-28',
+    status: 'REJECTED',
+    description: 'Dynamic dispatch and sensor-fusion collision avoidance for driverless terminal tractors operating within container ports and logistics freight parks.',
+    deliverables: [
+      'Edge gateway installation and sensor calibration',
+      'Fleet telematics cloud dashboard',
+      'Traffic manager dispatch optimizer engine'
+    ],
+    certifications: ['Pending Automotive Safety ISO 26262'],
+    slaCommitment: 'Real-time vehicle position sync < 20ms',
+    reviewerRemarks: 'Safety certification ISO 26262 audit is still pending. Re-submit once provisional safety signoff is granted.',
+    decidedDate: '2026-03-02',
+  },
+  {
+    id: 'SRV-2026-106',
+    serviceName: 'Bio-Informatics Multi-Omics Pipeline Support',
+    companyId: 'cmp_biovance_06',
+    companyName: 'BioVance Therapeutics LLP',
+    companyIndustry: 'BioTech & Pharmaceuticals',
+    category: 'BioTech & Life Sciences',
+    deliveryModel: 'Cloud Analytics Platform + Scientific Consultation',
+    pricingTier: 'Per Genome Cohort Analysis',
+    submissionDate: '2026-03-10',
+    status: 'PENDING',
+    description: 'Accelerated NGS whole-genome variant discovery, structural biology molecular dynamics simulations, and clinical trial biomarker profiling pipelines.',
+    deliverables: [
+      'Quality-controlled raw FASTQ/BAM data processing pipeline',
+      'Pathogenic variant annotation and prioritization dossier',
+      'Regulatory-ready submission data format (CDISC SDTM)',
+      'Scientific consultation with computational biology experts'
+    ],
+    certifications: ['GLP Compliant', 'CLIA Pipeline Validated', 'FDA 21 CFR Part 11'],
+    slaCommitment: 'Standard 48-hour turnaround for cohort genome variant mapping',
+  },
+];
+
 class MockDataStore {
   private applications: OnboardingApplication[] = INITIAL_APPLICATIONS;
   private companies: CompanyRecord[] = INITIAL_COMPANIES;
   private serviceProviders: ServiceProviderRecord[] = INITIAL_SERVICE_PROVIDERS;
+  private serviceVerifications: CompanyServiceVerificationRecord[] = INITIAL_SERVICE_VERIFICATIONS;
   private users: PlatformUserRecord[] = INITIAL_USERS;
   private auditLogs: AuditLogRecord[] = INITIAL_AUDIT_LOGS;
   private notifications: NotificationRecord[] = INITIAL_NOTIFICATIONS;
@@ -1299,6 +1451,27 @@ class MockDataStore {
     return [...this.users];
   }
 
+  getUserById(id: string): PlatformUserRecord | undefined {
+    return this.users.find((u) => u.id === id);
+  }
+
+  updateUser(id: string, updates: Partial<PlatformUserRecord>): boolean {
+    const idx = this.users.findIndex((u) => u.id === id);
+    if (idx === -1) return false;
+    this.users[idx] = { ...this.users[idx], ...updates };
+    this.addAuditLog({
+      user: 'Vikramaditya Roy',
+      role: 'ADMIN',
+      module: 'Users',
+      action: 'UPDATE_USER',
+      entityType: 'User',
+      entityId: id,
+      newValue: `Updated user profile details for ${this.users[idx].name}`,
+    });
+    this.notify();
+    return true;
+  }
+
   addUser(user: Omit<PlatformUserRecord, 'id' | 'registrationDate' | 'lastLoginDate'>): PlatformUserRecord {
     const newUser: PlatformUserRecord = {
       id: `usr_${Date.now()}`,
@@ -1393,6 +1566,104 @@ class MockDataStore {
     this.notify();
   }
 
+
+  // Service Verifications
+  getServiceVerifications(): CompanyServiceVerificationRecord[] {
+    return [...this.serviceVerifications];
+  }
+
+  getServiceVerificationById(id: string): CompanyServiceVerificationRecord | undefined {
+    return this.serviceVerifications.find((s) => s.id === id);
+  }
+
+  approveServiceVerification(id: string, remarks?: string): boolean {
+    const item = this.serviceVerifications.find((s) => s.id === id);
+    if (!item) return false;
+    item.status = 'APPROVED';
+    item.reviewerRemarks = remarks || 'Service specification verified against compliance and capability criteria. Approved for catalog publication.';
+    item.decidedDate = new Date().toISOString().split('T')[0];
+
+    // Also sync with company services list if not already present
+    const comp = this.companies.find((c) => c.id === item.companyId);
+    if (comp && !comp.services.includes(item.serviceName)) {
+      comp.services.push(item.serviceName);
+    }
+
+    this.addAuditLog({
+      user: 'Vikramaditya Roy',
+      role: 'ADMIN',
+      module: 'Service Verification',
+      action: 'APPROVE_SERVICE',
+      entityType: 'CompanyService',
+      entityId: id,
+      newValue: `Approved service ${item.serviceName} for ${item.companyName}`,
+    });
+
+    this.notify();
+    return true;
+  }
+
+  rejectServiceVerification(id: string, reason: string): boolean {
+    const item = this.serviceVerifications.find((s) => s.id === id);
+    if (!item) return false;
+    item.status = 'REJECTED';
+    item.reviewerRemarks = reason;
+    item.decidedDate = new Date().toISOString().split('T')[0];
+
+    this.addAuditLog({
+      user: 'Vikramaditya Roy',
+      role: 'ADMIN',
+      module: 'Service Verification',
+      action: 'REJECT_SERVICE',
+      entityType: 'CompanyService',
+      entityId: id,
+      newValue: `Rejected service ${item.serviceName}. Reason: ${reason}`,
+    });
+
+    this.notify();
+    return true;
+  }
+
+  addCompanyService(service: Omit<CompanyServiceVerificationRecord, 'id' | 'submissionDate'>): CompanyServiceVerificationRecord {
+    const newService: CompanyServiceVerificationRecord = {
+      id: `SRV-2026-${Math.floor(100 + Math.random() * 900)}`,
+      submissionDate: new Date().toISOString().split('T')[0],
+      ...service,
+    };
+
+    this.serviceVerifications.unshift(newService);
+
+    // Also sync with company services list if not already present
+    const comp = this.companies.find((c) => c.id === newService.companyId);
+    if (comp && !comp.services.includes(newService.serviceName)) {
+      comp.services.push(newService.serviceName);
+    }
+
+    this.addAuditLog({
+      user: 'Vikramaditya Roy',
+      role: 'ADMIN',
+      module: 'Services',
+      action: 'ADD_COMPANY_SERVICE',
+      entityType: 'CompanyService',
+      entityId: newService.id,
+      newValue: `Admin added service "${newService.serviceName}" for company ${newService.companyName}`,
+    });
+
+    this.notify();
+    return newService;
+  }
+
+  setServiceVerificationStatus(id: string, status: 'PENDING' | 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED', remarks?: string): boolean {
+    const item = this.serviceVerifications.find((s) => s.id === id);
+    if (!item) return false;
+    item.status = status;
+    if (remarks) item.reviewerRemarks = remarks;
+    if (status === 'APPROVED' || status === 'REJECTED') {
+      item.decidedDate = new Date().toISOString().split('T')[0];
+    }
+    this.notify();
+    return true;
+  }
 
   // CMS
   getCMSSections(): CMSSectionRecord[] {

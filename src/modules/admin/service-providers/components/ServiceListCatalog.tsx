@@ -5,6 +5,7 @@ import { Button } from '../../../../shared/components/ui/Button';
 import { Modal } from '../../../../shared/components/ui/Modal';
 import { useDebounce } from '../../../../shared/hooks/useDebounce';
 import { useServiceProviders } from '../../../../features/service-providers/hooks/useServiceProviders';
+import { ROUTES } from '../../../../shared/constants/routes.constants';
 import {
   Briefcase,
   Search,
@@ -344,7 +345,7 @@ export const ServiceListCatalog: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Left Dropdown Pill Button */}
+      {/* Top Left Dropdown Pill Button & Top Right Add Services */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="relative inline-block text-left" ref={dropdownRef}>
           <button
@@ -526,8 +527,8 @@ export const ServiceListCatalog: React.FC = () => {
                 <Button
                   size="sm"
                   variant="ghost"
-                  onClick={() => setSelectedService(service)}
-                  className="text-xs text-[var(--brand-primary)] hover:text-emerald-300"
+                  onClick={() => navigate(ROUTES.ADMIN.SERVICE_DETAILS(service.id))}
+                  className="text-xs text-[var(--brand-primary)] hover:text-emerald-300 font-semibold"
                 >
                   View Details →
                 </Button>

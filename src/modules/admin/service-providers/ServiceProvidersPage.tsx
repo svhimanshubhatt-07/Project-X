@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { PageHeader } from '../../../shared/components/dashboard/PageHeader';
+import { Button } from '../../../shared/components/ui/Button';
+import { Plus } from 'lucide-react';
+import { ROUTES } from '../../../shared/constants/routes.constants';
 import { AllProvidersTable } from './components/AllProvidersTable';
 import { ServiceListCatalog } from './components/ServiceListCatalog';
 
 export const ServiceProvidersPage: React.FC = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const tabParam = searchParams.get('tab');
   const [isServicesView, setIsServicesView] = useState(tabParam === 'services');
@@ -34,9 +38,22 @@ export const ServiceProvidersPage: React.FC = () => {
                 { label: 'Service Providers' },
               ]
         }
+        actions={
+          isServicesView ? (
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => navigate(ROUTES.ADMIN.SERVICE_CREATE)}
+              leftIcon={<Plus className="w-4 h-4" />}
+            >
+              Add Services
+            </Button>
+          ) : undefined
+        }
       />
 
       {isServicesView ? <ServiceListCatalog /> : <AllProvidersTable />}
     </div>
   );
 };
+

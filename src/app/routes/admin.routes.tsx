@@ -3,6 +3,8 @@ import { AdminLayout } from '../../layouts/AdminLayout/AdminLayout';
 import { AdminDashboardPage } from '../../modules/admin/dashboard/AdminDashboardPage';
 import { ApplicationsPage } from '../../modules/admin/onboarding-applications/ApplicationsPage';
 import { ApplicationDetailsPage } from '../../modules/admin/onboarding-applications/ApplicationDetailsPage';
+import { ServiceVerificationPage } from '../../modules/admin/service-verification/ServiceVerificationPage';
+import { ServiceDetailsPage } from '../../modules/admin/service-verification/ServiceDetailsPage';
 import { CompaniesPage } from '../../modules/admin/companies/CompaniesPage';
 import { OnboardCompanyPage } from '../../modules/admin/companies/OnboardCompanyPage';
 import { CompanyDetailsPage } from '../../modules/admin/companies/CompanyDetailsPage';
@@ -10,8 +12,10 @@ import { EditCompanyPage } from '../../modules/admin/companies/EditCompanyPage';
 import { ListingsPage } from '../../modules/admin/listings/ListingsPage';
 import { ServiceProvidersPage } from '../../modules/admin/service-providers/ServiceProvidersPage';
 import { ServiceProviderDetailsPage } from '../../modules/admin/service-providers/ServiceProviderDetailsPage';
+import { AddServicePage } from '../../modules/admin/service-providers/AddServicePage';
 import { UsersPage } from '../../modules/admin/users/UsersPage';
 import { CreateUserPage } from '../../modules/admin/users/CreateUserPage';
+import { UserDetailsPage } from '../../modules/admin/users/UserDetailsPage';
 import { DocumentsPage } from '../../modules/admin/documents/DocumentsPage';
 import { NotificationsPage } from '../../modules/admin/notifications/NotificationsPage';
 import { NotificationTemplatesPage } from '../../modules/admin/notification-templates/NotificationTemplatesPage';
@@ -42,6 +46,18 @@ export const adminRoutes: RouteObject = {
       element: <ApplicationDetailsPage />,
     },
     {
+      path: 'service-verification',
+      element: <ServiceVerificationPage />,
+    },
+    {
+      path: 'service-verification/:id',
+      element: <ServiceDetailsPage />,
+    },
+    {
+      path: 'services/:id',
+      element: <ServiceDetailsPage />,
+    },
+    {
       path: 'companies',
       element: <CompaniesPage />,
     },
@@ -70,12 +86,20 @@ export const adminRoutes: RouteObject = {
       element: <ServiceProviderDetailsPage />,
     },
     {
+      path: 'services/create',
+      element: <AddServicePage />,
+    },
+    {
       path: 'users',
       element: <UsersPage />,
     },
     {
       path: 'users/create',
       element: <CreateUserPage />,
+    },
+    {
+      path: 'users/:id',
+      element: <UserDetailsPage />,
     },
     {
       path: 'documents',

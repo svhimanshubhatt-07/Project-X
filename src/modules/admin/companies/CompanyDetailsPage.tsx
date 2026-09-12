@@ -7,6 +7,7 @@ import { Tabs } from '../../../shared/components/ui/Tabs';
 import { ConfirmDialog } from '../../../shared/components/dashboard/ConfirmDialog';
 import { useCompanies } from '../../../features/companies/hooks/useCompanies';
 import { useUsers } from '../../../features/users/hooks/useUsers';
+import { useServiceVerifications } from '../../../features/services-verification/hooks/useServiceVerifications';
 import { useToast } from '../../../app/providers/ToastProvider';
 import { formatDate } from '../../../shared/utils/formatDate';
 import {
@@ -38,6 +39,9 @@ import {
   X,
   RotateCcw,
   Clock,
+  Layers,
+  Plus,
+  Tag,
 } from 'lucide-react';
 import { ROUTES } from '../../../shared/constants/routes.constants';
 
@@ -52,10 +56,20 @@ export const CompanyDetailsPage: React.FC = () => {
   const navigate = useNavigate();
   const { getCompanyById, setCompanyStatus, setListingStatus } = useCompanies();
   const { users } = useUsers();
+  const { services: allServices } = useServiceVerifications();
   const { success, error, info } = useToast();
 
   const company = id ? getCompanyById(id) : undefined;
   const [activeTab, setActiveTab] = useState<'overview' | 'tax' | 'documents'>('overview');
+
+  // Listed company services
+  const companyServices = company
+    ? allServices.filter(
+        (s) =>
+          s.companyId === company.id ||
+          (company.name && s.companyName.toLowerCase() === company.name.toLowerCase())
+      )
+    : [];
 
   const [isSuspendModalOpen, setIsSuspendModalOpen] = useState(false);
   const [isActivateModalOpen, setIsActivateModalOpen] = useState(false);
@@ -646,6 +660,91 @@ export const CompanyDetailsPage: React.FC = () => {
                       <span className="text-sm font-semibold text-slate-200 mt-1 block">{country}</span>
                     </div>
                   </div>
+                </CardBody>
+              </Card>
+
+              {/* 4. Listed Company Services & Solutions */}
+              <Card className="bg-[#0c2130] border-[#17384e] shadow-xl">
+                <CardHeader
+                  title="Listed Services & Enterprise Solutions"
+                  subtitle={`${companyServices.length} verified service offerings listed under ${company.name}`}
+                  action={
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => navigate(ROUTES.ADMIN.SERVICE_CREATE)}
+                      leftIcon={<Plus className="w-3.5 h-3.5 text-teal-400" />}
+                      className="text-xs"
+                    >
+                      Add Service
+                    </Button>
+                  }
+                />
+                <CardBody className="space-y-4">
+                  {companyServices.length > 0 ? (
+                    <div className="space-y-3">
+                      {companyServices.map((srv) => (
+                        <div
+                          key={srv.id}
+                          className="p-4 rounded-xl bg-[#091b27] border border-[#17384e] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-teal-500/40 transition-colors group"
+                        >
+                          <div className="flex items-start gap-3.5 min-w-0">
+                            <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 shrink-0">
+                              <Layers className="w-5 h-5" />
+                            </div>
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <h4 className="text-sm font-bold text-slate-100 group-hover:text-teal-300 transition-colors">
+                                  {srv.serviceName}
+                                </h4>
+                                <StatusBadge status={srv.status} size="sm" />
+                              </div>
+                              <div className="flex items-center gap-3 text-xs text-slate-400 mt-1">
+                                <span className="text-teal-400 font-medium">{srv.category}</span>
+                                <span>•</span>
+                                <span className="font-mono text-slate-300">{srv.pricingTier}</span>
+                                <span>•</span>
+                                <span>{srv.deliveryModel}</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
+                            <button
+                              type="button"
+                              onClick={() => navigate(ROUTES.ADMIN.SERVICE_DETAILS(srv.id))}
+                              className="p-2 rounded-xl text-teal-400 hover:text-teal-300 hover:bg-teal-500/15 border border-teal-500/30 transition-all flex items-center gap-1.5 text-xs font-semibold cursor-pointer"
+                              title="View Full Service Details"
+                            >
+                              <Eye className="w-4 h-4" />
+                              <span>View Service</span>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="p-8 text-center rounded-xl bg-[#091b27] border border-dashed border-[#17384e] space-y-3">
+                      <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center mx-auto text-teal-400">
+                        <Layers className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs font-bold text-slate-200">No Services Listed Yet</h4>
+                        <p className="text-[11px] text-slate-400 mt-0.5">
+                          Add the first standardized capability or solution for {company.name}.
+                        </p>
+                      </div>
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => navigate(ROUTES.ADMIN.SERVICE_CREATE)}
+                        leftIcon={<Plus className="w-3.5 h-3.5" />}
+                        className="text-xs"
+                      >
+                        Add Service for this Company
+                      </Button>
+                    </div>
+                  )}
                 </CardBody>
               </Card>
             </div>

@@ -37,7 +37,7 @@ export const ApplicationTable: React.FC<ApplicationTableProps> = ({
       header: 'COMPANY NAME',
       render: (item: OnboardingApplication) => (
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#091b27] border border-[#17384e] flex items-center justify-center font-bold text-teal-400 text-xs shrink-0 shadow-inner">
+          <div className="w-9 h-9 rounded-xl bg-[var(--bg-card-inner)] border border-[var(--border-subtle)] flex items-center justify-center font-bold text-[var(--brand-primary)] text-xs shrink-0 shadow-inner">
             {item.companyName.slice(0, 2).toUpperCase()}
           </div>
           <span className="font-semibold text-slate-100">{item.companyName}</span>

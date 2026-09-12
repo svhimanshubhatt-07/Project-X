@@ -7,7 +7,7 @@ import { usePagination } from '../../../shared/hooks/usePagination';
 import { useDebounce } from '../../../shared/hooks/useDebounce';
 import { Button } from '../../../shared/components/ui/Button';
 import { Tabs } from '../../../shared/components/ui/Tabs';
-import { DownloadCloud, Filter, Clock, FileText, CheckCircle2, XCircle } from 'lucide-react';
+import { DownloadCloud, Clock, FileText, XCircle } from 'lucide-react';
 import { useToast } from '../../../app/providers/ToastProvider';
 
 export const ApplicationsPage: React.FC = () => {
@@ -20,7 +20,13 @@ export const ApplicationsPage: React.FC = () => {
 
   useEffect(() => {
     if (urlStatus && urlStatus !== activeTab) {
-      setActiveTab(urlStatus);
+      if (urlStatus === 'APPROVED') {
+        setActiveTab('ALL');
+        searchParams.delete('status');
+        setSearchParams(searchParams);
+      } else {
+        setActiveTab(urlStatus);
+      }
     }
   }, [urlStatus]);
 
@@ -37,20 +43,24 @@ export const ApplicationsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearch = useDebounce(searchTerm, 250);
 
+  // Exclude approved applications from the applications page
+  const nonApprovedApps = useMemo(() => {
+    return applications.filter((a) => a.status !== 'APPROVED');
+  }, [applications]);
+
   // Counts for tabs
   const tabCounts = useMemo(() => {
     return {
-      ALL: applications.length,
-      SUBMITTED: applications.filter((a) => a.status === 'SUBMITTED' || a.status === 'RESUBMITTED').length,
-      UNDER_REVIEW: applications.filter((a) => a.status === 'UNDER_REVIEW').length,
-      APPROVED: applications.filter((a) => a.status === 'APPROVED').length,
-      REJECTED: applications.filter((a) => a.status === 'REJECTED').length,
+      ALL: nonApprovedApps.length,
+      SUBMITTED: nonApprovedApps.filter((a) => a.status === 'SUBMITTED' || a.status === 'RESUBMITTED').length,
+      UNDER_REVIEW: nonApprovedApps.filter((a) => a.status === 'UNDER_REVIEW').length,
+      REJECTED: nonApprovedApps.filter((a) => a.status === 'REJECTED').length,
     };
-  }, [applications]);
+  }, [nonApprovedApps]);
 
   // Filtered applications
   const filteredApps = useMemo(() => {
-    return applications.filter((app) => {
+    return nonApprovedApps.filter((app) => {
       // Tab filter
       if (activeTab !== 'ALL') {
         if (activeTab === 'SUBMITTED') {
@@ -71,16 +81,20 @@ export const ApplicationsPage: React.FC = () => {
 
       return true;
     });
-  }, [applications, activeTab, debouncedSearch]);
+  }, [nonApprovedApps, activeTab, debouncedSearch]);
 
   const { items, page, totalPages, total, limit, setPage } = usePagination(filteredApps, 10);
 
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Onboarding Applications"
+        title="Application Verification"
         subtitle="Review, verify legal documentation, and decide company verification statuses."
-        breadcrumbs={[{ label: 'Dashboard', path: '/admin/dashboard' }, { label: 'Applications' }]}
+        breadcrumbs={[
+          { label: 'Dashboard', path: '/admin/dashboard' },
+          { label: 'Verification', path: '/admin/applications' },
+          { label: 'Application Verification' },
+        ]}
         actions={
           <Button
             variant="outline"
@@ -111,12 +125,6 @@ export const ApplicationsPage: React.FC = () => {
             label: 'Under Review',
             count: tabCounts.UNDER_REVIEW,
             icon: <FileText className="w-4 h-4 text-blue-400" />,
-          },
-          {
-            id: 'APPROVED',
-            label: 'Approved',
-            count: tabCounts.APPROVED,
-            icon: <CheckCircle2 className="w-4 h-4 text-emerald-400" />,
           },
           {
             id: 'REJECTED',
