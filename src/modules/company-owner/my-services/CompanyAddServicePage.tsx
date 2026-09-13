@@ -146,15 +146,15 @@ export const CompanyAddServicePage: React.FC = () => {
         category,
         deliveryModel: deliveryModel.trim(),
         pricingTier: pricingTier.trim(),
-        status: 'PENDING',
+        status: 'APPROVED',
         description: description.trim(),
         deliverables,
         certifications: selectedCertifications,
         slaCommitment: slaCommitment.trim() || '99.9% availability SLA with dedicated technical support',
-        reviewerRemarks: 'Submitted by company owner. Pending administrative compliance verification.',
+        reviewerRemarks: 'Published directly by company owner.',
       });
 
-      success(`Service "${serviceName}" successfully submitted for verification!`);
+      success(`Service "${serviceName}" published live successfully!`);
       navigate(ROUTES.COMPANY_OWNER.MY_SERVICES);
     } catch (err) {
       error('Failed to add service. Please check the form and try again.');
@@ -168,7 +168,7 @@ export const CompanyAddServicePage: React.FC = () => {
       {/* Page Header */}
       <PageHeader
         title="Add Company Service"
-        subtitle="Configure a new proprietary capability, scope of work, and SLA terms for verification and marketplace listing."
+        subtitle="Configure and directly publish a new proprietary capability, scope of work, and SLA terms for your public listing."
         breadcrumbs={[
           { label: 'Dashboard', path: ROUTES.COMPANY_OWNER.DASHBOARD },
           { label: 'My Services', path: ROUTES.COMPANY_OWNER.MY_SERVICES },
@@ -437,15 +437,15 @@ export const CompanyAddServicePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Verification Notice Banner */}
-            <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
-              <Clock className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+            {/* Publishing Notice Banner */}
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wider">
-                  Verification Process
+                <h4 className="text-xs font-bold text-emerald-300 uppercase tracking-wider">
+                  Direct Live Publishing
                 </h4>
                 <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Upon submission, this service will be queued for compliance and capability verification by the administrative review team. Once verified, it will be published live in the platform marketplace and linked to your company profile.
+                  Upon listing, this service capability will be immediately published live to the platform marketplace catalog and shown under your public company profile.
                 </p>
               </div>
             </div>
@@ -469,7 +469,7 @@ export const CompanyAddServicePage: React.FC = () => {
             leftIcon={<Plus className="w-4 h-4" />}
             className="shadow-[0_0_20px_rgba(0,229,153,0.3)]"
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Service for Verification'}
+            {isSubmitting ? 'Publishing...' : 'Publish Service Live'}
           </Button>
         </div>
       </form>

@@ -155,23 +155,21 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
       )}
     >
       {/* Brand Header */}
-      <div className="h-20 px-5 flex items-center justify-between border-b border-border-divider shrink-0">
+      <div className="h-20 px-5 flex items-center justify-between border-b border-[#273244] shrink-0">
         <div className="flex items-center gap-3 overflow-hidden">
           {/* Logo Star / Project X Symbol */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-teal-400 to-emerald-400 p-[1.5px] shadow-md shadow-teal-500/20 shrink-0">
-            <div className="w-full h-full bg-bg-sidebar rounded-[10px] flex items-center justify-center">
-              <span className="text-brand-primary font-extrabold text-base tracking-tighter">✦</span>
-            </div>
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 shadow-sm">
+            <span className="font-extrabold text-base tracking-tighter">✦</span>
           </div>
 
           {!isCollapsed && (
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <span className="font-heading font-extrabold text-base tracking-wider text-content-primary">
-                  Project <span className="text-brand-primary">X</span>
+                <span className="font-heading font-extrabold text-base tracking-wider text-[#F3F4F6]">
+                  Project <span className="text-[#3B82F6]">X</span>
                 </span>
               </div>
-              <span className="text-[11px] text-content-secondary font-medium tracking-wide">
+              <span className="text-[11px] text-[#9CA3AF] font-medium tracking-wide">
                 Build. Manage. Grow.
               </span>
             </div>
@@ -180,7 +178,7 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
 
         <button
           onClick={onToggleCollapse}
-          className="p-1.5 rounded-lg text-content-secondary hover:text-content-primary hover:bg-bg-surfaceHover transition-colors"
+          className="p-1.5 rounded-lg text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#1F2937] transition-colors"
           title={isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
         >
           {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
@@ -203,30 +201,30 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                   type="button"
                   onClick={() => toggleGroup(item.id)}
                   className={clsx(
-                    'w-full group flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-150',
+                    'w-full group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-150',
                     isChildActive
-                      ? 'text-content-primary font-semibold'
-                      : 'text-content-secondary hover:text-content-primary hover:bg-bg-surfaceHover'
+                      ? 'text-[#F3F4F6] font-semibold'
+                      : 'text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#1F2937]'
                   )}
                   title={isCollapsed ? item.title : undefined}
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="shrink-0 text-content-secondary group-hover:text-brand-primary transition-colors">
+                    <span className="shrink-0 text-[#9CA3AF] group-hover:text-[#3B82F6] transition-colors">
                       {ICON_MAP[item.icon] || <Compass className="w-5 h-5" />}
                     </span>
                     {!isCollapsed && <span className="truncate">{item.title}</span>}
                   </div>
 
                   {!isCollapsed && (
-                    <span className="text-content-secondary group-hover:text-content-primary shrink-0 ml-2">
-                      {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    <span className="text-[#9CA3AF] group-hover:text-[#F3F4F6] shrink-0 ml-2">
+                      {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                     </span>
                   )}
                 </button>
 
                 {/* Sub-items Tree branch with left vertical line */}
                 {!isCollapsed && isExpanded && item.children && (
-                  <div className="ml-6 pl-4 border-l border-brand-primary/40 space-y-1 my-1 animate-fadeIn">
+                  <div className="ml-6 pl-3 border-l border-[#273244] space-y-1 my-1 animate-fadeIn">
                     {item.children.map((child) => {
                       const isSubActive = isPathActive(child.path);
 
@@ -235,10 +233,10 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
                           key={child.id}
                           to={child.path}
                           className={clsx(
-                            'group flex items-center justify-between px-2.5 py-2 rounded-lg text-sm transition-all duration-150',
+                            'group flex items-center justify-between px-2.5 py-2 rounded-lg text-xs sm:text-sm transition-all duration-150',
                             isSubActive
-                              ? 'text-teal-300 font-semibold bg-brand-primary/15'
-                              : 'text-content-secondary hover:text-content-primary hover:translate-x-1 hover:bg-bg-surfaceHover/50'
+                              ? 'text-[#60A5FA] font-semibold bg-[#172554]'
+                              : 'text-[#9CA3AF] hover:text-[#F3F4F6] hover:translate-x-0.5 hover:bg-[#1F2937]/60'
                           )}
                         >
                           <span className="truncate">{child.title}</span>
@@ -259,14 +257,14 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
               key={item.id}
               to={item.path}
               className={clsx(
-                'group flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-150 relative',
+                'group flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-150 relative',
                 isActive
-                  ? 'bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-950 font-bold shadow-lg shadow-teal-500/25'
-                  : 'text-content-secondary hover:text-content-primary hover:bg-bg-surfaceHover'
+                  ? 'bg-gradient-to-r from-[#2B78F6] to-[#162C58] text-white font-semibold shadow-md shadow-blue-500/20'
+                  : 'text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#1F2937]'
               )}
               title={isCollapsed ? item.title : undefined}
             >
-              <span className="shrink-0">
+              <span className={clsx('shrink-0', isActive ? 'text-white' : 'text-[#9CA3AF] group-hover:text-[#F3F4F6]')}>
                 {ICON_MAP[item.icon] || <Compass className="w-5 h-5" />}
               </span>
 

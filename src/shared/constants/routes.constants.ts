@@ -9,8 +9,6 @@ export const ROUTES = {
     DASHBOARD: '/admin/dashboard',
     APPLICATIONS: '/admin/applications',
     APPLICATION_DETAILS: (id: string = ':id') => `/admin/applications/${id}`,
-    SERVICE_VERIFICATION: '/admin/service-verification',
-    SERVICE_VERIFICATION_DETAILS: (id: string = ':id') => `/admin/service-verification/${id}`,
     SERVICE_DETAILS: (id: string = ':id') => `/admin/services/${id}`,
     SERVICE_CREATE: '/admin/services/create',
     COMPANIES: '/admin/companies',

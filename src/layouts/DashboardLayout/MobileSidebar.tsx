@@ -131,22 +131,22 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose, i
 
       <div className="fixed inset-y-0 left-0 w-72 bg-bg-sidebar text-content-primary border-r border-border-divider shadow-2xl flex flex-col z-10">
         {/* Brand Header */}
-        <div className="h-20 px-5 flex items-center justify-between border-b border-border-divider">
+        <div className="h-20 px-5 flex items-center justify-between border-b border-[#273244]">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 to-teal-500 flex items-center justify-center font-bold text-slate-950 text-xs shadow-md shadow-teal-500/20">
-              PX
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center font-bold text-emerald-400 text-xs shadow-sm">
+              ✦
             </div>
             <div>
-              <span className="font-heading font-bold text-sm tracking-wider text-content-primary uppercase">
-                Project <span className="text-brand-primary">X</span>
+              <span className="font-heading font-bold text-sm tracking-wider text-[#F3F4F6] uppercase">
+                Project <span className="text-[#3B82F6]">X</span>
               </span>
-              <p className="text-xs text-content-secondary font-medium">
+              <p className="text-xs text-[#9CA3AF] font-medium">
                 {user?.role === ROLES.ADMIN ? 'Admin Portal' : 'Owner Portal'}
               </p>
             </div>
           </div>
 
-          <button onClick={onClose} className="p-1.5 rounded-lg text-content-secondary hover:text-content-primary">
+          <button onClick={onClose} className="p-1.5 rounded-lg text-[#9CA3AF] hover:text-[#F3F4F6]">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -166,21 +166,21 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose, i
                     type="button"
                     onClick={() => toggleGroup(item.id)}
                     className={clsx(
-                      'w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium transition-all',
-                      isChildActive ? 'text-content-primary font-semibold' : 'text-content-secondary hover:text-content-primary hover:bg-bg-surfaceHover'
+                      'w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all',
+                      isChildActive ? 'text-[#F3F4F6] font-semibold' : 'text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#1F2937]'
                     )}
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-content-secondary">{ICON_MAP[item.icon] || <Compass className="w-5 h-5" />}</span>
+                      <span className="text-[#9CA3AF]">{ICON_MAP[item.icon] || <Compass className="w-5 h-5" />}</span>
                       <span>{item.title}</span>
                     </div>
-                    <span className="text-content-secondary">
+                    <span className="text-[#9CA3AF]">
                       {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                     </span>
                   </button>
 
                   {isExpanded && item.children && (
-                    <div className="ml-6 pl-4 border-l border-brand-primary/40 space-y-1 my-1">
+                    <div className="ml-6 pl-3 border-l border-[#273244] space-y-1 my-1">
                       {item.children.map((child) => {
                         const isSubActive = isPathActive(child.path);
 
@@ -190,15 +190,15 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose, i
                             to={child.path}
                             onClick={onClose}
                             className={clsx(
-                              'flex items-center justify-between px-2.5 py-2 rounded-lg text-sm transition-all',
+                              'flex items-center justify-between px-2.5 py-2 rounded-lg text-xs sm:text-sm transition-all',
                               isSubActive
-                                ? 'text-teal-300 font-semibold bg-brand-primary/15'
-                                : 'text-content-secondary hover:text-content-primary hover:bg-bg-surfaceHover/30'
+                                ? 'text-[#60A5FA] font-semibold bg-[#172554]'
+                                : 'text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#1F2937]/50'
                             )}
                           >
                             <span className="truncate">{child.title}</span>
                             {child.badge !== undefined && (
-                              <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-brand-primary/20 text-teal-300 border border-brand-primary/30">
+                              <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[#172554] text-[#60A5FA] border border-[#1E3A5F]">
                                 {child.badge}
                               </span>
                             )}
@@ -219,16 +219,16 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose, i
                 to={item.path}
                 onClick={onClose}
                 className={clsx(
-                  'flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium transition-all',
+                  'flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all',
                   isActive
-                    ? 'bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-950 font-bold shadow-lg shadow-teal-500/25'
-                    : 'text-content-secondary hover:text-content-primary hover:bg-bg-surfaceHover'
+                    ? 'bg-gradient-to-r from-[#2B78F6] to-[#162C58] text-white font-semibold shadow-md shadow-blue-500/20'
+                    : 'text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#1F2937]'
                 )}
               >
                 {ICON_MAP[item.icon] || <Compass className="w-5 h-5" />}
                 <span className="flex-1">{item.title}</span>
                 {item.badge !== undefined && (
-                  <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                  <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[#172554] text-[#60A5FA] border border-[#1E3A5F]">
                     {item.badge}
                   </span>
                 )}

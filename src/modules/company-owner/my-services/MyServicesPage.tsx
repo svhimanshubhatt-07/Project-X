@@ -83,7 +83,7 @@ export const MyServicesPage: React.FC = () => {
       {/* Page Header */}
       <PageHeader
         title="My Services & Solutions"
-        subtitle="Manage and list your proprietary capabilities, service specifications, pricing tiers, and verification status for marketplace inclusion."
+        subtitle="Manage and list your proprietary capabilities, service specifications, pricing tiers, and directly publish them to the marketplace."
         breadcrumbs={[
           { label: 'Dashboard', path: ROUTES.COMPANY_OWNER.DASHBOARD },
           { label: 'My Services' },
@@ -104,7 +104,7 @@ export const MyServicesPage: React.FC = () => {
       />
 
       {/* KPI Stats Overview Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {/* Total Services */}
         <div className="p-4 rounded-2xl bg-[var(--bg-table)] border border-[var(--border-table)] relative overflow-hidden group hover:border-[var(--brand-primary)]/40 transition-colors">
           <div className="flex items-center justify-between">
@@ -121,7 +121,7 @@ export const MyServicesPage: React.FC = () => {
           </span>
         </div>
 
-        {/* Active & Verified */}
+        {/* Active & Published */}
         <div className="p-4 rounded-2xl bg-[var(--bg-table)] border border-[var(--border-table)] relative overflow-hidden group hover:border-emerald-500/40 transition-colors">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400">Active & Published</span>
@@ -137,35 +137,19 @@ export const MyServicesPage: React.FC = () => {
           </span>
         </div>
 
-        {/* Pending Verification */}
-        <div className="p-4 rounded-2xl bg-[var(--bg-table)] border border-[var(--border-table)] relative overflow-hidden group hover:border-amber-500/40 transition-colors">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400">Pending Review</span>
-            <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <Clock className="w-4 h-4" />
-            </div>
-          </div>
-          <div className="mt-2 text-2xl font-extrabold text-amber-400 font-heading">
-            {pendingCount}
-          </div>
-          <span className="text-[11px] text-slate-400 mt-0.5 block">
-            Awaiting admin check
-          </span>
-        </div>
-
-        {/* Under Review / Rejected */}
+        {/* Unique Categories */}
         <div className="p-4 rounded-2xl bg-[var(--bg-table)] border border-[var(--border-table)] relative overflow-hidden group hover:border-cyan-500/40 transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400">In Pipeline / Other</span>
+            <span className="text-xs font-semibold text-slate-400">Service Categories</span>
             <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
               <Sparkles className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 text-2xl font-extrabold text-cyan-400 font-heading">
-            {underReviewCount + rejectedCount}
+            {uniqueCategories.length || 1}
           </div>
           <span className="text-[11px] text-slate-400 mt-0.5 block">
-            {underReviewCount} Under Review • {rejectedCount} Rejected
+            Active domain verticals
           </span>
         </div>
       </div>

@@ -8,7 +8,7 @@ export interface DashboardContentProps {
 
 export const DashboardContent: React.FC<DashboardContentProps> = ({ children, className }) => {
   return (
-    <main className={clsx('flex-1 p-4 sm:p-8 max-w-7xl w-full mx-auto animate-fadeIn', className)}>
+    <main className={clsx('flex-1 p-6 sm:p-8 max-w-[1600px] w-full mx-auto animate-fadeIn', className)}>
       {children}
     </main>
   );

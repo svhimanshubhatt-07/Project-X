@@ -19,25 +19,25 @@ export const Badge: React.FC<BadgeProps> = ({
   className,
 }) => {
   const variants = {
-    default: 'bg-[#143144] text-slate-300 border-[#1c4560]',
-    success: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-    warning: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
-    danger: 'bg-rose-500/20 text-rose-400 border-rose-500/30',
-    info: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
-    orange: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    purple: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-    outline: 'bg-transparent text-slate-300 border-[#17384e]',
+    default: 'bg-[#1F2937] text-[#9CA3AF] border-[#273244]',
+    success: 'bg-[#22C55E]/15 text-[#22C55E] border-[#22C55E]/30',
+    warning: 'bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/30',
+    danger: 'bg-[#EF4444]/15 text-[#EF4444] border-[#EF4444]/30',
+    info: 'bg-[#3B82F6]/15 text-[#3B82F6] border-[#3B82F6]/30',
+    orange: 'bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/30',
+    purple: 'bg-[#8B5CF6]/15 text-[#8B5CF6] border-[#8B5CF6]/30',
+    outline: 'bg-transparent text-[#9CA3AF] border-[#273244]',
   };
 
   const dotColors = {
-    default: 'bg-slate-500',
-    success: 'bg-emerald-500',
-    warning: 'bg-amber-500',
-    danger: 'bg-rose-500',
-    info: 'bg-blue-500',
-    orange: 'bg-orange-500',
-    purple: 'bg-purple-500',
-    outline: 'bg-slate-500',
+    default: 'bg-[#667085]',
+    success: 'bg-[#22C55E]',
+    warning: 'bg-[#F59E0B]',
+    danger: 'bg-[#EF4444]',
+    info: 'bg-[#3B82F6]',
+    orange: 'bg-[#F59E0B]',
+    purple: 'bg-[#8B5CF6]',
+    outline: 'bg-[#667085]',
   };
 
   const sizes = {

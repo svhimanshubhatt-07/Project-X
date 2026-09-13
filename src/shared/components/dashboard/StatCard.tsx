@@ -28,27 +28,27 @@ export const StatCard: React.FC<StatCardProps> = ({
   className,
 }) => {
   const borderAccents = {
-    default: 'hover:border-[var(--brand-primary)]/50',
-    orange: 'hover:border-rose-500/40',
-    emerald: 'hover:border-emerald-500/50',
-    blue: 'hover:border-cyan-500/40',
-    purple: 'hover:border-purple-500/40',
+    default: 'hover:border-[#3B82F6]/50',
+    orange: 'hover:border-[#EC4899]/50',
+    emerald: 'hover:border-[#3B82F6]/50',
+    blue: 'hover:border-[#3B82F6]/50',
+    purple: 'hover:border-[#8B5CF6]/50',
   };
 
   const iconBg = {
-    default: 'bg-[var(--bg-card-inner)] text-[var(--brand-primary)] border-[var(--border-subtle)]',
-    orange: 'bg-[var(--bg-card-inner)] text-rose-400 border-[var(--border-subtle)]',
-    emerald: 'bg-[var(--bg-card-inner)] text-emerald-400 border-[var(--border-subtle)]',
-    blue: 'bg-[var(--bg-card-inner)] text-cyan-400 border-[var(--border-subtle)]',
-    purple: 'bg-[var(--bg-card-inner)] text-purple-400 border-[var(--border-subtle)]',
+    default: 'bg-[#172554] text-[#3B82F6] border-[#1E3A5F]',
+    orange: 'bg-[#2A1526] text-[#EC4899] border-[#4A1E3E]',
+    emerald: 'bg-[#172554] text-[#3B82F6] border-[#1E3A5F]',
+    blue: 'bg-[#172554] text-[#3B82F6] border-[#1E3A5F]',
+    purple: 'bg-[#1F1E38] text-[#8B5CF6] border-[#312E81]',
   };
 
   return (
     <div
       onClick={onClick}
       className={clsx(
-        'relative bg-[var(--bg-table)] rounded-2xl border border-[var(--border-table)] p-5 shadow-xl transition-all duration-200 overflow-hidden flex items-center justify-between gap-4',
-        onClick && 'cursor-pointer hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-[var(--brand-glow)]',
+        'relative bg-[#111827] rounded-2xl border border-[#273244] p-5 shadow-xl transition-all duration-200 overflow-hidden flex items-center justify-between gap-4',
+        onClick && 'cursor-pointer hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-blue-500/10',
         borderAccents[variant],
         className
       )}
@@ -57,7 +57,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         {icon && (
           <div
             className={clsx(
-              'w-12 h-12 rounded-xl flex items-center justify-center border shrink-0',
+              'w-11 h-11 rounded-xl flex items-center justify-center border shrink-0',
               iconBg[variant]
             )}
           >
@@ -66,20 +66,20 @@ export const StatCard: React.FC<StatCardProps> = ({
         )}
 
         <div>
-          <p className="text-xs font-medium text-slate-400 select-none">
+          <p className="text-xs font-medium text-[#9CA3AF] select-none">
             {title}
           </p>
           <div className="mt-1 flex items-baseline gap-2.5">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#F3F4F6] font-heading tracking-tight">
               {value}
             </h3>
             {trend && (
               <span
                 className={clsx(
-                  'inline-flex items-center gap-0.5 px-2 py-0.5 rounded-lg font-semibold text-xs',
+                  'inline-flex items-center gap-0.5 px-2 py-0.5 rounded-lg font-semibold text-xs font-mono',
                   trend.isPositive !== false
-                    ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/25'
-                    : 'bg-rose-500/15 text-rose-400 border border-rose-500/25'
+                    ? 'bg-[#172554] text-[#60A5FA] border border-[#1E3A5F]'
+                    : 'bg-[#2A1526] text-[#EC4899] border border-[#4A1E3E]'
                 )}
               >
                 {trend.isPositive !== false ? (
@@ -93,7 +93,7 @@ export const StatCard: React.FC<StatCardProps> = ({
           </div>
         </div>
       </div>
-      {description && <span className="text-slate-400 ml-auto">{description}</span>}
+      {description && <span className="text-[#9CA3AF] ml-auto">{description}</span>}
     </div>
   );
 };

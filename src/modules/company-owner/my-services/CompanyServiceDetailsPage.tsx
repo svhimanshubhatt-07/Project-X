@@ -59,7 +59,7 @@ export const CompanyServiceDetailsPage: React.FC = () => {
       {/* Page Header */}
       <PageHeader
         title={service.serviceName}
-        subtitle="Detailed Service Specification, Deliverables & Compliance Status"
+        subtitle="Detailed Service Specification, Deliverables & Marketplace Status"
         breadcrumbs={[
           { label: 'Dashboard', path: ROUTES.COMPANY_OWNER.DASHBOARD },
           { label: 'My Services', path: ROUTES.COMPANY_OWNER.MY_SERVICES },

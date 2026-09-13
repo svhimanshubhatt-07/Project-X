@@ -49,16 +49,8 @@ export const COMPANY_OWNER_NAVIGATION: MenuItem[] = [
   {
     id: 'owner-discover-companies',
     title: 'Discover Companies',
-    path: '#discover',
+    path: ROUTES.COMPANY_OWNER.DISCOVER_COMPANIES,
     icon: 'Search',
-    children: [
-      {
-        id: 'owner-all-companies',
-        title: 'All Companies',
-        path: ROUTES.COMPANY_OWNER.DISCOVER_COMPANIES,
-        icon: 'Building',
-      },
-    ],
   },
   {
     id: 'owner-notifications',

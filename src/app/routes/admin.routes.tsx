@@ -3,8 +3,7 @@ import { AdminLayout } from '../../layouts/AdminLayout/AdminLayout';
 import { AdminDashboardPage } from '../../modules/admin/dashboard/AdminDashboardPage';
 import { ApplicationsPage } from '../../modules/admin/onboarding-applications/ApplicationsPage';
 import { ApplicationDetailsPage } from '../../modules/admin/onboarding-applications/ApplicationDetailsPage';
-import { ServiceVerificationPage } from '../../modules/admin/service-verification/ServiceVerificationPage';
-import { ServiceDetailsPage } from '../../modules/admin/service-verification/ServiceDetailsPage';
+import { AdminServiceDetailsPage } from '../../modules/admin/service-providers/AdminServiceDetailsPage';
 import { CompaniesPage } from '../../modules/admin/companies/CompaniesPage';
 import { OnboardCompanyPage } from '../../modules/admin/companies/OnboardCompanyPage';
 import { CompanyDetailsPage } from '../../modules/admin/companies/CompanyDetailsPage';
@@ -46,16 +45,8 @@ export const adminRoutes: RouteObject = {
       element: <ApplicationDetailsPage />,
     },
     {
-      path: 'service-verification',
-      element: <ServiceVerificationPage />,
-    },
-    {
-      path: 'service-verification/:id',
-      element: <ServiceDetailsPage />,
-    },
-    {
       path: 'services/:id',
-      element: <ServiceDetailsPage />,
+      element: <AdminServiceDetailsPage />,
     },
     {
       path: 'companies',

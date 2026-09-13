@@ -25,10 +25,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)]/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none active:scale-[0.98] select-none';
+    const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#3B82F6]/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none active:scale-[0.98] select-none';
 
     const variants = {
-      primary: 'bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] hover:brightness-110 text-slate-950 font-semibold shadow-sm hover:shadow-[var(--shadow-glow)] border border-transparent',
+      primary: 'bg-gradient-to-r from-[#2B78F6] to-[#162C58] hover:from-[#448CFC] hover:to-[#223E75] text-white font-semibold shadow-md shadow-blue-500/20 border border-blue-400/20',
       secondary: 'bg-[var(--bg-table)] hover:bg-[var(--bg-surface-hover)] text-slate-200 border border-[var(--border-table)] shadow-sm hover:border-[var(--brand-primary)]/40',
       outline: 'bg-transparent border border-[var(--border-table)] text-slate-200 hover:bg-[var(--bg-table)] hover:text-white hover:border-[var(--brand-primary)]/40',
       danger: 'bg-rose-600 hover:bg-rose-500 text-white shadow-sm shadow-rose-500/20 border border-transparent',

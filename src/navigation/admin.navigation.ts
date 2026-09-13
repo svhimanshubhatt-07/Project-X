@@ -11,22 +11,8 @@ export const ADMIN_NAVIGATION: MenuItem[] = [
   {
     id: 'admin-verification',
     title: 'Verification',
-    path: '#verification',
+    path: ROUTES.ADMIN.APPLICATIONS,
     icon: 'ShieldCheck',
-    children: [
-      {
-        id: 'admin-application-verification',
-        title: 'Application Verification',
-        path: ROUTES.ADMIN.APPLICATIONS,
-        icon: 'FileCheck2',
-      },
-      {
-        id: 'admin-service-verification',
-        title: 'Service Verification',
-        path: ROUTES.ADMIN.SERVICE_VERIFICATION,
-        icon: 'Layers',
-      },
-    ],
   },
   {
     id: 'admin-companies',

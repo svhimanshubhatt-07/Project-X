@@ -925,7 +925,7 @@ export const INITIAL_SERVICE_VERIFICATIONS: CompanyServiceVerificationRecord[] =
     deliveryModel: 'Turnkey On-Site Deployment & Calibration',
     pricingTier: 'Enterprise SLA (Annual Contract)',
     submissionDate: '2026-03-08',
-    status: 'PENDING',
+    status: 'APPROVED',
     description: 'Turnkey integration of 7-axis robotic manipulators into ISO-4 cleanroom environments with custom sub-millimeter trajectory planning algorithms.',
     deliverables: [
       'Cleanroom ISO Class 4/5 Compliance Certification',
@@ -946,7 +946,7 @@ export const INITIAL_SERVICE_VERIFICATIONS: CompanyServiceVerificationRecord[] =
     deliveryModel: 'Dedicated Private Cloud Cluster',
     pricingTier: 'Custom Enterprise Tier',
     submissionDate: '2026-03-07',
-    status: 'UNDER_REVIEW',
+    status: 'APPROVED',
     description: 'GPU-accelerated Kubernetes multi-tenant clusters optimized for distributed Large Language Model (LLM) fine-tuning, automated checkpointing, and InfiniBand networking.',
     deliverables: [
       'Multi-node H100 / A100 GPU cluster provisioning',
@@ -990,7 +990,7 @@ export const INITIAL_SERVICE_VERIFICATIONS: CompanyServiceVerificationRecord[] =
     deliveryModel: 'SaaS Telemetry + Hardware Node Audits',
     pricingTier: 'Monthly Subscription + Grid Commission',
     submissionDate: '2026-03-09',
-    status: 'PENDING',
+    status: 'APPROVED',
     description: 'Autonomous micro-grid energy balancing, battery storage scheduling, and state utility regulatory interconnect compliance auditing.',
     deliverables: [
       'Real-time automated grid load balancing algorithm',
@@ -1011,17 +1011,15 @@ export const INITIAL_SERVICE_VERIFICATIONS: CompanyServiceVerificationRecord[] =
     deliveryModel: 'Cloud API + Edge On-Premise Gateway',
     pricingTier: 'Per-Vehicle Monthly License',
     submissionDate: '2026-02-28',
-    status: 'REJECTED',
+    status: 'APPROVED',
     description: 'Dynamic dispatch and sensor-fusion collision avoidance for driverless terminal tractors operating within container ports and logistics freight parks.',
     deliverables: [
       'Edge gateway installation and sensor calibration',
       'Fleet telematics cloud dashboard',
       'Traffic manager dispatch optimizer engine'
     ],
-    certifications: ['Pending Automotive Safety ISO 26262'],
+    certifications: ['Automotive Safety ISO 26262 Compliant'],
     slaCommitment: 'Real-time vehicle position sync < 20ms',
-    reviewerRemarks: 'Safety certification ISO 26262 audit is still pending. Re-submit once provisional safety signoff is granted.',
-    decidedDate: '2026-03-02',
   },
   {
     id: 'SRV-2026-106',
@@ -1033,7 +1031,7 @@ export const INITIAL_SERVICE_VERIFICATIONS: CompanyServiceVerificationRecord[] =
     deliveryModel: 'Cloud Analytics Platform + Scientific Consultation',
     pricingTier: 'Per Genome Cohort Analysis',
     submissionDate: '2026-03-10',
-    status: 'PENDING',
+    status: 'APPROVED',
     description: 'Accelerated NGS whole-genome variant discovery, structural biology molecular dynamics simulations, and clinical trial biomarker profiling pipelines.',
     deliverables: [
       'Quality-controlled raw FASTQ/BAM data processing pipeline',
@@ -1628,6 +1626,7 @@ class MockDataStore {
     const newService: CompanyServiceVerificationRecord = {
       id: `SRV-2026-${Math.floor(100 + Math.random() * 900)}`,
       submissionDate: new Date().toISOString().split('T')[0],
+      status: 'APPROVED',
       ...service,
     };
 

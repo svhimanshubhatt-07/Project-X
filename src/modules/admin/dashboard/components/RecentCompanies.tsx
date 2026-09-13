@@ -15,21 +15,21 @@ export const RecentCompanies: React.FC = () => {
   ];
 
   return (
-    <Card className="h-full bg-[var(--bg-table)] border border-[var(--border-table)] shadow-xl">
+    <Card className="h-full bg-[#111827] border border-[#273244] shadow-xl">
       <CardHeader
         title="Recent Companies"
         action={
           <button
             onClick={() => navigate(ROUTES.ADMIN.COMPANIES)}
-            className="text-xs font-semibold text-[var(--brand-primary)] hover:opacity-80 transition-opacity"
+            className="text-xs font-semibold text-[#22C55E] hover:underline transition-all"
           >
             View All
           </button>
         }
       />
       <CardBody className="p-0 overflow-x-auto">
-        <table className="w-full text-left text-xs text-[var(--text-table-body)]">
-          <thead className="text-[11px] font-semibold text-[var(--text-table-header)] border-b border-[var(--border-table-header)] bg-[var(--bg-table-header)] select-none">
+        <table className="w-full text-left text-xs text-[#F3F4F6]">
+          <thead className="text-[11px] font-semibold text-[#9CA3AF] border-b border-[#273244] bg-[#1F2937] select-none">
             <tr>
               <th className="py-3 px-5">Company Name</th>
               <th className="py-3 px-4">Owner</th>
@@ -38,34 +38,34 @@ export const RecentCompanies: React.FC = () => {
               <th className="py-3 px-5 text-right">Registered On</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[var(--border-table-row)]">
+          <tbody className="divide-y divide-[#273244]">
             {companiesList.map((comp) => (
               <tr
                 key={comp.id}
                 onClick={() => navigate(ROUTES.ADMIN.COMPANIES)}
-                className="hover:bg-[var(--bg-table-row-hover)] transition-colors cursor-pointer group"
+                className="hover:bg-[#1F2937] transition-colors cursor-pointer group"
               >
-                <td className="py-3.5 px-5 font-semibold text-[var(--text-table-body)] group-hover:text-[var(--brand-primary)] transition-colors truncate">
+                <td className="py-3.5 px-5 font-semibold text-[#F3F4F6] group-hover:text-[#3B82F6] transition-colors truncate">
                   {comp.name}
                 </td>
-                <td className="py-3.5 px-4 text-slate-300 truncate">
+                <td className="py-3.5 px-4 text-[#9CA3AF] truncate">
                   {comp.owner}
                 </td>
-                <td className="py-3.5 px-4 text-slate-400 truncate">
+                <td className="py-3.5 px-4 text-[#667085] truncate">
                   {comp.industry}
                 </td>
                 <td className="py-3.5 px-4 text-center">
                   <span
                     className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
                       comp.status === 'Active'
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                        : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                        ? 'bg-[#22C55E]/15 text-[#22C55E] border border-[#22C55E]/30'
+                        : 'bg-[#F59E0B]/15 text-[#F59E0B] border border-[#F59E0B]/30'
                     }`}
                   >
                     {comp.status}
                   </span>
                 </td>
-                <td className="py-3.5 px-5 text-right text-slate-400 font-mono text-[11px]">
+                <td className="py-3.5 px-5 text-right text-[#9CA3AF] font-mono text-[11px]">
                   {comp.registeredOn}
                 </td>
               </tr>

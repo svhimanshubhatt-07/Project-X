@@ -88,12 +88,11 @@ export const ApplicationsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Application Verification"
+        title="Verification"
         subtitle="Review, verify legal documentation, and decide company verification statuses."
         breadcrumbs={[
           { label: 'Dashboard', path: '/admin/dashboard' },
-          { label: 'Verification', path: '/admin/applications' },
-          { label: 'Application Verification' },
+          { label: 'Verification' },
         ]}
         actions={
           <Button

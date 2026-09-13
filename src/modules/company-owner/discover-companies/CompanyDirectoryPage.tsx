@@ -126,8 +126,31 @@ export const CompanyDirectoryPage: React.FC = () => {
                   {comp.description}
                 </p>
 
+                {/* Products & Services summary */}
+                <div className="flex items-center gap-3 text-[11px] text-slate-400 font-medium">
+                  {comp.products && comp.products.length > 0 && (
+                    <span className="text-teal-300">
+                      {comp.products.length} {comp.products.length === 1 ? 'Product' : 'Products'}
+                    </span>
+                  )}
+                  {comp.products && comp.products.length > 0 && comp.services && comp.services.length > 0 && (
+                    <span>•</span>
+                  )}
+                  {comp.services && comp.services.length > 0 && (
+                    <span className="text-cyan-300">
+                      {comp.services.length} {comp.services.length === 1 ? 'Service' : 'Services'}
+                    </span>
+                  )}
+                  {comp.foundedYear && (
+                    <>
+                      <span>•</span>
+                      <span>Est. {comp.foundedYear}</span>
+                    </>
+                  )}
+                </div>
+
                 {/* Tech Chips */}
-                <div className="flex flex-wrap gap-1.5 pt-2">
+                <div className="flex flex-wrap gap-1.5 pt-1">
                   {comp.technologies.slice(0, 3).map((t, idx) => (
                     <span key={idx} className="px-2 py-0.5 rounded-md bg-[#091b27] text-[10px] text-slate-300 border border-[#17384e]">
                       {t}
@@ -144,7 +167,7 @@ export const CompanyDirectoryPage: React.FC = () => {
                     {comp.headquarters.split(',')[0]}
                   </span>
                   <span className="text-teal-400 font-semibold flex items-center gap-1 group-hover:underline">
-                    View Entity <ArrowRight className="w-3.5 h-3.5" />
+                    View Details <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </CardBody>

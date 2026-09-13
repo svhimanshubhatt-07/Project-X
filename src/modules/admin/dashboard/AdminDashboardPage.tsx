@@ -26,19 +26,19 @@ export const AdminDashboardPage: React.FC = () => {
       {/* Top Greeting & Date Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#F3F4F6] font-heading tracking-tight">
             {getGreeting()}, Admin!
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-[#9CA3AF] mt-1">
             A unified platform for company administration and ecosystem monitoring.
           </p>
         </div>
 
         <div className="flex items-center gap-3 self-start sm:self-auto">
-          <button className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#0c2130] border border-[#17384e] hover:border-teal-500/40 text-slate-200 text-xs font-medium shadow-md transition-all">
-            <CalendarIcon className="w-4 h-4 text-teal-400" />
+          <button className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-[#111827] border border-[#273244] hover:border-[#3B82F6] text-[#F3F4F6] text-xs font-medium shadow-md transition-all">
+            <CalendarIcon className="w-3.5 h-3.5 text-[#14B8A6]" />
             <span>{dateLabel}</span>
-            <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+            <ChevronDown className="w-3.5 h-3.5 text-[#9CA3AF]" />
           </button>
         </div>
       </div>
